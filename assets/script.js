@@ -256,20 +256,26 @@ srtop.reveal('.contact .container .form-group', { delay: 400 });
 
 document.addEventListener('DOMContentLoaded', function() {
     const switchToggle = document.querySelector('.toggle');
-    const toggleIcon = document.getElementById('toggle-icon');
+    /* const toggleIcon = document.getElementById('toggle-icon'); */
+    const img1=document.getElementById('img1');
+/*     const img2=document.getElementById('img2');
+    const img3=document.getElementById('img3'); */
 
     function switchMode(e) {
         
         if (e.target.checked) {
             document.documentElement.setAttribute('data-theme', 'light');
-            lightmode();
+            /* lightmode(); */
+            imageSwitchMode('light');
+            
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
-            darkmode();
+            /* darkmode(); */
+            imageSwitchMode('dark');
         }
     }
 
-    function darkmode() {
+    /* function darkmode() {
         toggleIcon.children[0].textContent = "Dark mode";
         toggleIcon.children[1].classList.replace('fa-sun', 'fa-moon');
     }
@@ -277,12 +283,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function lightmode() {
         toggleIcon.children[0].textContent = "Light mode";
         toggleIcon.children[1].classList.replace('fa-moon', 'fa-sun');
-    }
+    } */
 
-    
-    
-
+    function imageSwitchMode(mode){
+            
+            img1.src=`assets/images/1${mode}.svg`
+            /* img2.src=`img/2${mode}.svg`
+            img3.src=`img/3${mode}.svg` */
+        }
     switchToggle.addEventListener('change', switchMode);
+
+    
+    
 });
 
 /* document.querySelector('.morebtn .btn').addEventListener('click', function(e) {
