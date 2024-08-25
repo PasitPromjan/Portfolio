@@ -239,15 +239,15 @@ srtop.reveal('.about .content .resumebtn', { delay: 200 });
 srtop.reveal('.skills .container', { interval: 200 });
 srtop.reveal('.skills .container .bar', { delay: 400 });
 
-/* SCROLL EDUCATION */
-srtop.reveal('.education .box', { interval: 200 });
+/* SCROLL cert */
+srtop.reveal('.cert .box', { interval: 200 });
 
 /* SCROLL PROJECTS */
 srtop.reveal('.work .box', { interval: 200 });
 
-/* SCROLL EXPERIENCE */
-srtop.reveal('.experience .timeline', { delay: 400 });
-srtop.reveal('.experience .timeline .container', { interval: 400 });
+/* SCROLL edu */
+srtop.reveal('.edu .timeline', { delay: 400 });
+srtop.reveal('.edu .timeline .container', { interval: 400 });
 
 /* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
@@ -284,3 +284,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     switchToggle.addEventListener('change', switchMode);
 });
+
+/* document.querySelector('.morebtn .btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('edu').classList.toggle('show-content');
+  });
+   */
+
+
+
+  
