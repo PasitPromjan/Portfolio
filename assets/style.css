@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --primary-color: rgb(255, 92, 92);
   --head-color: #2D2F2D;
   --highlight-color: #78A083; 
   --text-color: #f4f4f4;
@@ -32,10 +31,11 @@
   --work-gra2:#344955 ;
   --work-text: #74E291;
   --work-hover: #50727B;
+  --footer: #425F57;
+  --footer-icon: #74E291;
 }
 
 [data-theme="light"] {
-  --primary-color: rgb(255, 92, 92);
   --head-color: #f4f4f4;
   --highlight-color: #9370DB;
   --text-color: #1E201E;
@@ -64,7 +64,8 @@
   --work-gra2:#392467 ;
   --work-text: #FF7ED4;
   --work-hover: #836FFF;
-
+  --footer: rgb(0, 1, 43);
+  --footer-icon: #FF7ED4;
 }
 
 * {
@@ -1313,7 +1314,7 @@ form .button-area {
 .footer {
   min-height: auto;
   padding-top: 0;
-  background: rgb(0, 1, 43);
+  background: var(--footer);
 }
 .footer .box-container {
   display: flex;
@@ -1338,7 +1339,7 @@ form .button-area {
 }
 .footer .box-container .box p i {
   padding-right: 1rem;
-  color: #ffae00;
+  color: var(--footer-icon);
 }
 .footer .box-container .box a {
   font-size: 1.5rem;
@@ -1347,7 +1348,7 @@ form .button-area {
   display: block;
 }
 .footer .box-container .box a:hover {
-  color: #ffae00;
+  color: var(--footer-icon);
 }
 .footer .box-container .box .share {
   display: flex;
@@ -1364,14 +1365,14 @@ form .button-area {
   margin-right: 1rem;
   transition: 0.2s;
   background: rgb(230, 230, 230);
-  color: #02094b;
+  color: #1E201E;
   border: none;
 }
 .footer .box-container .box .share a:hover {
   background: transparent;
   transform: scale(0.98);
   border: 0.1rem solid rgb(180, 178, 178);
-  color: #ffae00;
+  color: var(--footer-icon);
 }
 .footer .credit {
   padding: 1rem 0 0 0;
@@ -1383,7 +1384,7 @@ form .button-area {
   border-top: 0.1rem solid #fff3;
 }
 .footer .credit a {
-  color: #ffae00;
+  color: var(--footer-icon);
 }
 .footer .fa {
   color: #e90606;
