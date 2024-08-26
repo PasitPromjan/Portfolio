@@ -38,13 +38,13 @@
         <div id="menu" class="fas fa-bars"></div>
         <nav class="navbar">
             <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#cert">cert</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#edu">edu</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a class="active btn-nav" href="#home">Home</a></li>
+            <li><a class="btn-nav" href="#about">About</a></li>
+            <li><a class="btn-nav" href="#skills">Skills</a></li>
+            <li><a class="btn-nav" href="#cert">cert</a></li>
+            <li><a class="btn-nav" href="#work">Work</a></li>
+            <li><a class="btn-nav" href="#edu">edu</a></li>
+            <li><a class="btn-nav" href="#contact">Contact</a></li>
             </ul>
         </nav>
 </header>
@@ -69,13 +69,13 @@
         </ul>
       </div>
     </div>
-<div class="image">
-    <img draggable="false" class="tilt" src="assets/images/pasitss.jpeg" alt="">
-</div>
+  <div class="image">
+      <img draggable="false" class="tilt" src="assets/images/pasitss.jpeg" alt="">
+  </div>
 </section>
 <!-- hero section ends -->
-
-
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
 <!-- about section starts -->
 <section class="about" id="about">
     <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
@@ -115,6 +115,7 @@
 
     </div>
     </div>
+    <div class="zig-zag-3d-edge"></div>
 </section>
 <!-- about section ends -->
 
@@ -203,6 +204,8 @@
   <br>
     <div class="box-container">
 
+
+      
     <div class="box">
         <div class="image">
         <img draggable="false" src="assets/images/cert1.png" alt="">
@@ -327,7 +330,7 @@
         </div>
         </div>
       <div class="button-area">
-        <button type="submit">
+        <button type="submit" class="btn">
           Submit <i class="fa fa-paper-plane"></i></button>
       </div>
     </form>
@@ -344,14 +347,16 @@
 
       
 
-      <div class="box">
-          <a href="#home"><i class="fas fa-chevron-circle-right"></i> home</a>
-          <a href="#about"><i class="fas fa-chevron-circle-right"></i> about</a>
-          <a href="#skills"><i class="fas fa-chevron-circle-right"></i> skills</a>
-          <a href="#cert"><i class="fas fa-chevron-circle-right"></i> cert</a>
-          <a href="#work"><i class="fas fa-chevron-circle-right"></i> work</a>
-          <a href="#edu"><i class="fas fa-chevron-circle-right"></i> edu</a>
-      </div>
+    <div class="box">
+      <center>
+      <a href="#home" class="btn" ><i class="fas fa-chevron-circle-right"></i> home</a>
+      <a href="#about" class="btn"><i class="fas fa-chevron-circle-right"></i> about</a>
+      <a href="#skills" class="btn"><i class="fas fa-chevron-circle-right"></i> skills</a>
+      <a href="#cert" class="btn"><i class="fas fa-chevron-circle-right"></i> cert</a>
+      <a href="#work" class="btn"><i class="fas fa-chevron-circle-right"></i> work</a>
+      <a href="#edu" class="btn"><i class="fas fa-chevron-circle-right"></i> edu</a></center>
+    </div>
+    
 
       <div class="box">
         <h3>Pasit's Portfolio</h3>
@@ -404,6 +409,10 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
     ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
@@ -441,6 +450,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+
+<script>
+  $(document).ready(function() {
+    // ตรวจสอบขนาดหน้าจอ
+    if ($(window).width() <= 767) {
+      $('.cursor').remove();
+      $('.cursor-follower').remove();
+    }
+  });
+</script>
+
 
 </body>
 </html>
