@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 
 :root {
   --cursor-front: #fff;
@@ -103,7 +105,7 @@ body {
 
 html {
   font-size: 62.5%;
-  overflow-x: hidden;
+  
 }
 
 html::-webkit-scrollbar {
@@ -786,6 +788,7 @@ input:checked + .slider::before {
 .skills {
   min-height: 90vh;
   background: linear-gradient(to bottom, var(--skill-gra1), var(--skill-gra2));
+
 }
 .skills h2 {
   color: #fff;
@@ -837,6 +840,22 @@ input:checked + .slider::before {
   margin-left: 0.5rem;
 }
 
+ /* Applying CSS to sphere */
+.tagcloud {
+  display: inline-block;
+  align-self: center;
+  justify-content: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+}
+
+/* Change color of each text in sphere on hover   */
+.tagcloud--item:hover {
+  color: #FFC300 ;
+}
+
 /* skills media queries starts*/
 @media screen and (max-width: 600px) {
   .skills .container {
@@ -860,11 +879,11 @@ input:checked + .slider::before {
 /* cert section starts */
 
 /* main styles */
-
 .cert {
   background: var(--head-color);
   min-height: 80vh;
   color: var(--text-color);
+  position: relative;
 }
 
 .cert .qoute {
@@ -876,16 +895,39 @@ input:checked + .slider::before {
 }
 
 .cert .box-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
   gap: 5rem;
-  justify-content: center;
+  padding: 2rem 0;
+  scroll-behavior: smooth;
 }
 
+.cert .box-container::-webkit-scrollbar {
+  height: 50px;
+  width: 16px;
+}
+
+.cert .box-container::-webkit-scrollbar-thumb {
+  background: var(--highlight-color);
+  border-radius: 10px;
+}
+
+.cert .box-container::-webkit-scrollbar-track {
+  background: var(--nav);
+  border-radius: 10px;
+}
+
+
+/* Ensure boxes don't stretch and have proper sizing */
 .cert .box-container .box {
+  flex: 0 0 auto; /* Prevent boxes from stretching */
+  width: calc(100% / 3 - 2 * 5rem); /* Adjust width to fit 3 boxes with spacing */
+  margin: 0; /* Remove margin */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
   display: flex;
   flex-direction: column;
-  width: 100%;
   border-radius: 0.5rem;
   box-shadow: 0.2rem 0.5rem 1rem var(--edu-shadow);
   text-align: center;
@@ -909,7 +951,7 @@ input:checked + .slider::before {
 .cert .box-container .box img {
   object-fit: cover;
   width: 100%;
-  height: 100%; /* ครอบคลุมความสูงของคอนเทนเนอร์ */
+  height: 100%; /*ครอบคลุมความสูงของคอนเทนเนอร์*/
 }
 
 .cert .box-container .box .content {
@@ -920,7 +962,7 @@ input:checked + .slider::before {
   height: 100%;
   padding: 1rem;
   background: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(255,255,255,0) 50%);
-  color: var(--text-color); 
+  color: var(--text-color);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
@@ -967,14 +1009,11 @@ input:checked + .slider::before {
 
 /* cert media queries starts */
 @media screen and (max-width: 600px) {
-  .cert .box-container {
-    display: flex; /* เปลี่ยนกลับไปใช้ Flexbox สำหรับหน้าจอขนาดเล็ก */
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  /* .cert .box-container {
+    
+    
   }
-
+ */
   .cert .box-container .box {
     width: 100%;
     margin-top: 1rem; /* ลดขนาด margin */
@@ -1001,6 +1040,7 @@ input:checked + .slider::before {
     flex-wrap: wrap;
   }
 }
+
 
 
 
@@ -1318,6 +1358,7 @@ input:checked + .slider::before {
 .contact {
   background: var(--contact-back);
   min-height: 60vh;
+  position: relative;
 }
 .contact .container {
   max-width: 1050px;

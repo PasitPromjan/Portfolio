@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel='stylesheet' href='https://raw.githubusercontent.com/JohnBlazek/codepen-resources/master/3d-carousel/css/stylesheet.css'><link rel="stylesheet" href="./style.css">
 
     <link id='favicon' rel="shortcut icon" href="assets/images/icon.png" type="image/x-png">
     <title>Portfolio | Jigar Sable</title>
@@ -190,78 +191,65 @@
             </div> 
 
       </div>
+      <div class="container" style="display: flex ;justify-content: center; align-items: center;">
+        <span class="Sphere" ></span>
+
+    <!-- Including the TagCloud.js script CDN in the document    -->
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"> </script>
+    <script>
+        const Texts = [
+            'HTML', 'CSS', 'JAVASCRIPT',
+            'SWIFT', 'MONGOOSE', 'REACT',
+            'PYTHON', 'SASS',
+            'DJANGO', 'NODEJS', 'MONGODB',
+            'EXPRESS', 'MYSQL', 'JQUERY', 'JAVA'
+        ];
+
+        var tagCloud = TagCloud('.Sphere', Texts, {
+
+            // Sphere radius in px
+            radius: 230,
+
+            // animation speed
+            // slow, normal, fast
+            maxSpeed: 'normal',
+            initSpeed: 'fast',
+
+            // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)] 
+            direction: 135,
+
+            // interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
+            keep: true
+
+        });
+
+        // Giving color to each text in sphere
+        var color = '#FF5733 ';
+        document.querySelector('.Sphere').style.color = color;
+    </script>
+      </div>
 </div>
 </section>
 <!-- skills section ends -->
 
 
 <!-- cert section starts -->
-<section class="cert" id="cert">
+<section class="cert " id="cert">
   <br>
   <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>certificate</span></h1>
 
     <p class="qoute">cert is not the learning of facts, but the training of the mind to think.</p>
   <br>
-    <div class="box-container">
 
-
-      
-    <div class="box">
-        <div class="image">
-        <img draggable="false" src="assets/images/cert1.png" alt="">
-        </div>
-        <div class="content">
-        <h3>กหฟฟกกฟกฟกหฟกฟหกฟกห</h3>
-        <p>กหฟกฟหกฟหกฟกหฟก</p>
-        <h4>กหฟกฟหกหฟ</h4>
-        </div>
-    </div>
-
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="assets/images/cert1.png" alt="">
-      </div>
-      <div class="content">
-      <h3>กฟหกหฟหกฟหกฟกหกฟ</h3>
-      <p>กหฟกฟดกหฟดฟดฟดฟหดดฟ</p>
-      <h4>2018-2020 | Completed</h4>
-      </div>
-    </div>
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="assets/images/cert1.png" alt="">
-      </div>
-      <div class="content">
-      <h3>กฟหกหฟหกฟหกฟกหกฟ</h3>
-      <p>กหฟกฟดกหฟดฟดฟดฟหดดฟ</p>
-      <h4>2018-2020 | Completed</h4>
-      </div>
-    </div>
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="assets/images/cert1.png" alt="">
-      </div>
-      <div class="content">
-      <h3>กฟหกหฟหกฟหกฟกหกฟ</h3>
-      <p>กหฟกฟดกหฟดฟดฟดฟหดดฟ</p>
-      <h4>2018-2020 | Completed</h4>
-      </div>
-    </div>
-    <div class="box">
-      <div class="image">
-      <img draggable="false" src="assets/images/cert1.png" alt="">
-      </div>
-      <div class="content">
-      <h3>กฟหกหฟหกฟหกฟกหกฟ</h3>
-      <p>กหฟกฟดกหฟดฟดฟดฟหดดฟ</p>
-      <h4>2018-2020 | Completed</h4>
-      </div>
+  <div class="box-container" id="cert-list">
+       
     </div>
 
 </div>
 </section>
 <!-- cert section ends -->
 
+    
 
 <!-- work project section starts -->
 <section class="work" id="work">
@@ -336,13 +324,14 @@
     </form>
   </div>
   </div>
+  <div class="zig-zag-3d-edge" style="bottom: -70px;"></div>
 </section>
 <!-- contact section ends -->
 
 
 <!-- footer section starts -->
 <section class="footer">
-
+  <br><br><br><br>
   <div class="box-container">
 
       
@@ -413,7 +402,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
 
-
+  <script src='https://raw.githubusercontent.com/JohnBlazek/codepen-resources/master/3d-carousel/js/libs.min.js'></script>
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
 <script src="assets/script.js"></script>

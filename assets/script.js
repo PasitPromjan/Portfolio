@@ -381,5 +381,70 @@ $(document).ready(function() {
   });
 });
 
+var product =[{
+  id:0,
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
 
+},{
+  id:1,
+  img:'assets/images/cert1.png' ,
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed' 
+},{
+  id:2,
+  img:'assets/images/cert1.png',
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
+},{
+  id:3,
+  img:'assets/images/cert1.png',
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
+},{
+  id:4,
+  img:'assets/images/cert1.png',
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
+},{
+  id:5,
+  img:'assets/images/cert1.png',
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
+},{
+  id:6,
+  img:'assets/images/cert1.png',
+  img:'assets/images/cert1.png',
+  h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
+  p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
+  h4:'2018-2020 | Completed'
+}];
 
+$(document).ready(() => {
+  var box ='';
+  for(let i=0;i<product.length; i++){
+      box+= `<div class="box">
+      <div class="image">
+      <img draggable="false" src="${product[i].img}" alt="">
+      </div>
+      <div class="content">
+      <h3>${product[i].h3}</h3>
+      <p>${product[i].p}</p>
+      <h4>${product[i].h4}</h4>
+      </div>
+    </div>`;
+  }
+  $("#cert-list").html(box);
+})
