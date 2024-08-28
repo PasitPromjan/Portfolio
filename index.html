@@ -122,7 +122,8 @@
 
 <!-- edu section starts -->
 <section class="edu" id="edu">
-
+  <div class="particles-container" id="particles-container" style="display: none;"></div>
+  <div id="particlesss-js"></div>
   <h2 class="heading"><i class="fas fa-briefcase"></i> cert </h2>
 
   
@@ -132,6 +133,7 @@
   </a>
   </div> -->
   <div class="timeline">
+    
 
     <div class="container right">
       
@@ -199,10 +201,10 @@
     <script>
         const Texts = [
             'HTML', 'CSS', 'JAVASCRIPT',
-            'SWIFT', 'MONGOOSE', 'REACT',
-            'PYTHON', 'SASS',
-            'DJANGO', 'NODEJS', 'MONGODB',
-            'EXPRESS', 'MYSQL', 'JQUERY', 'JAVA'
+            'BOOTSTRAP', 'GITHUB', 'PHP',
+            'PYTHON', 'FLUTTER',
+            'C#', 'C++', 'C',
+            'SQL', 'MYSQL', 'JQUERY', 'JAVA'
         ];
 
         var tagCloud = TagCloud('.Sphere', Texts, {
@@ -224,7 +226,7 @@
         });
 
         // Giving color to each text in sphere
-        var color = '#FF5733 ';
+        var color = '#B99470 ';
         document.querySelector('.Sphere').style.color = color;
     </script>
       </div>
@@ -450,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 </script>
 
-
+<script src="assets/particless.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </body>
 </html>

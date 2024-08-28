@@ -484,7 +484,6 @@ input:checked + .slider::before {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
 }
 
@@ -546,8 +545,6 @@ input:checked + .slider::before {
   font-weight: 600;
   padding: 1rem 0;
 }
-
-
 
 .home .btn {
   margin-top: 1rem;
@@ -853,7 +850,7 @@ input:checked + .slider::before {
 
 /* Change color of each text in sphere on hover   */
 .tagcloud--item:hover {
-  color: #FFC300 ;
+  color: #FEFAE0 ;
 }
 
 /* skills media queries starts*/
@@ -1171,6 +1168,7 @@ input:checked + .slider::before {
 /* edu section starts */
 .edu{
   min-height: 80vh;
+  position: relative;
 }
 
 .edu .timeline {
@@ -1182,7 +1180,7 @@ input:checked + .slider::before {
   content: "";
   position: absolute;
   width: 6px;
-  background: #020133;
+  background: var(--text-color);
   top: 0;
   bottom: 0;
   left: 50%;
@@ -1203,7 +1201,7 @@ input:checked + .slider::before {
   width: 25px;
   height: 25px;
   right: -17px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-main);
   border: 4px solid #ff9f55;
   top: 15px;
   border-radius: 50%;
@@ -1211,7 +1209,7 @@ input:checked + .slider::before {
   font-size: 1.89rem;
   text-align: center;
   font-weight: 600;
-  color: #02094b;
+  color: var(--text-color);
   font-family: "Font Awesome\ 5 Free";
 }
 .edu .left {
@@ -1229,9 +1227,9 @@ input:checked + .slider::before {
   width: 0;
   z-index: 1;
   right: 31px;
-  border: medium solid #f68c09;
+  border: medium solid #B99470;
   border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent #f68c09;
+  border-color: transparent transparent transparent #B99470;
 }
 /* arrows pointing left  */
 .edu .right::before {
@@ -1242,9 +1240,9 @@ input:checked + .slider::before {
   width: 0;
   z-index: 1;
   left: 31px;
-  border: medium solid #f68c09;
+  border: medium solid #B99470;
   border-width: 10px 10px 10px 0;
-  border-color: transparent #f68c09 transparent transparent;
+  border-color: transparent #B99470 transparent transparent;
 }
 .edu .right::after {
   left: -16px;
@@ -1255,7 +1253,7 @@ input:checked + .slider::before {
 }
 
 .edu .content {
-  background-color: #f68c09;
+  background-color: #B99470;
   position: relative;
   border-radius: 6px;
 }
@@ -1276,7 +1274,34 @@ input:checked + .slider::before {
   font-size: 1.2rem;
 }
 
+#particlesss-js {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
 
+.particles-container {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  
+  .particle {
+    background-color: #9370DB;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    outline: 1px solid transparent;
+  }
+}
 
 /* view all button */
 /* .morebtn {
@@ -1334,9 +1359,9 @@ input:checked + .slider::before {
   }
   .edu .container::before {
     left: 61px;
-    border: medium solid #f68c09;
+    border: medium solid #B99470;
     border-width: 10px 10px 10px 0;
-    border-color: transparent #f68c09 transparent transparent;
+    border-color: transparent #B99470 transparent transparent;
   }
   .edu .left::after {
     left: 15px;

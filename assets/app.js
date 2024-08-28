@@ -147,3 +147,5 @@ document.addEventListener('change', function(e) {
       initializeParticles(); // Reinitialize particles with the new theme color
   }
 });
+
+
