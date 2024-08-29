@@ -261,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /*     const img2=document.getElementById('img2');
     const img3=document.getElementById('img3'); */
     const divXxx = document.getElementById('particles-container');
+    const divYyy = document.getElementById('particlesss-js');
 
     function switchMode(e) {
         
@@ -293,8 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
             img3.src=`img/3${mode}.svg` */
             if (mode === 'dark') {
               divXxx.style.display = 'none';
+              divYyy.style.display = 'block';
           } else {
               divXxx.style.display = 'block';
+              divYyy.style.display = 'none';
           }
         }
     switchToggle.addEventListener('change', switchMode);
