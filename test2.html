@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+
+body {
+  min-height: 1200px;
+  background: rgb(25, 35, 40);
+  overflow-x: hidden;
+}
+
+@keyframes canv {
+  0% {transform: rotate(-5deg);}
+  100% {transform: rotate(5deg);}
+  
+}
+
+#cvs {
+  animation-name: canv;
+  animation-duration: 10s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="cvs" width="500" height="500"></canvas>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var canvas = document.getElementById("cvs");
+var ctx = canvas.getContext("2d");
+
+var w = $(window).width();
+var h = $(window).height();
+$("canvas").attr("width", w);
+$("canvas").attr("height", h);
+
+var particles = [];
+var num_particles = 2;
+var maxParticles = 200;
+
+// Generate random color
+function GetRandomColor() {
+  var r = 0,
+    g = 0,
+    b = 0;
+  while (r < 100 && g < 100 && b < 100) {
+    r = Math.floor(Math.random() * 32);
+    g = Math.floor(Math.random() * 32);
+    b = Math.floor(Math.random() * 32);
+  }
+
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
+// Define particle attributes
+var Particle = function() {
+  var hw = canvas.width * 0.5;
+  var hh = canvas.height * 0.5;
+  var off = 2;
+  var startRadius = 0;
+  this.x = hw + startRadius * Math.random() - startRadius * 0.5;
+  this.y = hh + startRadius * Math.random() - startRadius * 0.5;
+  this.x = w * Math.random();
+  this.y = h * Math.random();
+  this.a = 0;
+  this.s = Math.random() * 0.25;
+  this.scale = Math.random() * 8;
+  // Figure direction
+  var dirX = -1;
+  var dirY = -1;
+  if (Math.random() > 0.5) {
+    dirX = 1;
+  }
+  if (Math.random() > 0.5) {
+    dirY = 1;
+  }
+  this.vx = 0.4 * Math.random() * dirX;
+  this.vy = 0.2 * Math.random() * dirY;
+  this.alpha = Math.random();
+  this.Color = "rgba(255,255,65," + this.alpha + ")";
+  this.fade = 0.0;
+  this.lt = 100;
+  this.Color = 1;
+  if (Math.random() > 0.25) {
+    this.Color = 2;
+  }
+};
+
+// Draw particle to the screen
+Particle.prototype.Draw = function(ctx, next) {
+  switch (this.Color) {
+    case 1:
+      ctx.fillStyle = "rgba(40,200,100," + this.alpha + ")";
+      break;
+    case 2:
+      ctx.fillStyle = "rgba(0,120,125," + this.alpha + ")";
+      break;
+  }
+  ctx.shadowBlur = 25;
+  ctx.shadowColor = ctx.fillStyle;
+  //ctx.fillRect(this.x, this.y, this.scale, this.scale);
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.scale, 0, 2 * Math.PI, false);
+    ctx.fill();
+  
+  if (this.Color == 1) {
+    ctx.strokeStyle = "rgba(40,200,255," + (0.25 * (1 / this.alpha)) + ")";
+    ctx.strokeWidth = 0.5 * Math.random();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(next.x, next.y);
+    ctx.stroke();
+  }
+};
+
+// Particle animation
+Particle.prototype.Update = function() {
+  this.x += this.vx;
+  this.y += this.vy;
+  
+  if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+
+  if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+
+  this.x += Math.cos(this.a) * this.s;
+  this.y += Math.sin(this.a) * this.s;
+  this.a += Math.random() * 0.9 - 0.4;
+  this.fade += Math.random() * 0.025;
+  this.scale *= 0.999;
+
+  this.alpha += Math.sin(this.fade) * this.s;
+  this.lt -= 1;
+};
+
+function loop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (var i = 1; i < particles.length; i++) {
+    particles[i].Update();
+    particles[i].Draw(ctx, particles[i - 1]);
+  }
+  requestAnimationFrame(loop);
+}
+
+//Create particles
+for (var i = 0; i < num_particles; i++) {
+    particles.push(new Particle());
+}
+function generate() {
+  setInterval(function() {
+    if (particles.length < maxParticles) {
+      particles.push(new Particle());
+    } else {
+      particles.shift();
+      particles.push(new Particle());
+    }
+    console.log('Particle count: ' + particles.length);
+  }, 100);
+}
+
+generate();
+
+loop();
+    </script>
+</body>
+</html>

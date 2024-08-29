@@ -254,57 +254,26 @@ srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
 
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    const switchToggle = document.querySelector('.toggle');
-    /* const toggleIcon = document.getElementById('toggle-icon'); */
-    const img1=document.getElementById('img1');
-/*     const img2=document.getElementById('img2');
-    const img3=document.getElementById('img3'); */
-    const divXxx = document.getElementById('particles-container');
-    const divYyy = document.getElementById('particlesss-js');
-
-    function switchMode(e) {
+  const tgl_skill = document.querySelector('.tgl-skill');
+  const Sphere = document.getElementById('Sphere');
+  function switchtglskill(e) {
         
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'light');
-            /* lightmode(); */
-            imageSwitchMode('light');
-            
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            /* darkmode(); */
-            imageSwitchMode('dark');
-        }
+    if (e.target.checked) {
+      Sphere.style.display = 'block';
+        
+    } else {
+      Sphere.style.display = 'none';
     }
+}
 
-    /* function darkmode() {
-        toggleIcon.children[0].textContent = "Dark mode";
-        toggleIcon.children[1].classList.replace('fa-sun', 'fa-moon');
-    }
+  tgl_skill.addEventListener('change', switchtglskill);
 
-    function lightmode() {
-        toggleIcon.children[0].textContent = "Light mode";
-        toggleIcon.children[1].classList.replace('fa-moon', 'fa-sun');
-    } */
-
-    function imageSwitchMode(mode){
-            
-            img1.src=`assets/images/1${mode}.svg`
-            /* img2.src=`img/2${mode}.svg`
-            img3.src=`img/3${mode}.svg` */
-            if (mode === 'dark') {
-              divXxx.style.display = 'none';
-              divYyy.style.display = 'block';
-          } else {
-              divXxx.style.display = 'block';
-              divYyy.style.display = 'none';
-          }
-        }
-    switchToggle.addEventListener('change', switchMode);
-
-    
-    
 });
+
+
 
 /* document.querySelector('.morebtn .btn').addEventListener('click', function(e) {
     e.preventDefault();
