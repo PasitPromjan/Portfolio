@@ -206,27 +206,37 @@
             'SQL', 'MYSQL', 'JQUERY', 'JAVA'
         ];
 
-        var tagCloud = TagCloud('.Sphere', Texts, {
+        function initializeTagCloud() {
+            // Determine the radius based on screen width
+            const radius = window.innerWidth < 600 ? 150 : 230;
 
-            // Sphere radius in px
-            radius: 230,
+            // Initialize TagCloud with the determined radius
+            TagCloud('.Sphere', Texts, {
+                // Sphere radius in px
+                radius: radius,
 
-            // animation speed
-            // slow, normal, fast
-            maxSpeed: 'normal',
-            initSpeed: 'fast',
+                // Animation speed
+                // slow, normal, fast
+                maxSpeed: 'normal',
+                initSpeed: 'fast',
 
-            // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)] 
-            direction: 135,
+                // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)]
+                direction: 135,
 
-            // interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
-            keep: true
+                // Interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
+                keep: true
+            });
 
-        });
+            // Set the color for the text
+            var color = '#B99470';
+            document.querySelector('.Sphere').style.color = color;
+        }
 
-        // Giving color to each text in sphere
-        var color = '#B99470 ';
-        document.querySelector('.Sphere').style.color = color;
+            // Initialize the TagCloud on page load
+            initializeTagCloud();
+
+            // Reinitialize the TagCloud when the window is resized
+            window.addEventListener('resize', initializeTagCloud);
     </script>
       </div>
 </div>
