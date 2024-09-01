@@ -914,7 +914,7 @@ input:checked + .slider::before {
 }
 
 .cert .box-container::-webkit-scrollbar {
-  height: 50px;
+  height: 20px;
   width: 16px;
 }
 
@@ -931,10 +931,10 @@ input:checked + .slider::before {
 
 /* Ensure boxes don't stretch and have proper sizing */
 .cert .box-container .box {
-  flex: 0 0 auto; /* Prevent boxes from stretching */
-  width: calc(100% / 3 - 2 * 5rem); /* Adjust width to fit 3 boxes with spacing */
-  margin: 0; /* Remove margin */
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  flex: 0 0 auto;
+  width: 30vw;
+  margin: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
@@ -960,7 +960,7 @@ input:checked + .slider::before {
 .cert .box-container .box img {
   object-fit: cover;
   width: 100%;
-  height: 100%; /*ครอบคลุมความสูงของคอนเทนเนอร์*/
+  height: 100%;
 }
 
 .cert .box-container .box .content {
@@ -1016,7 +1016,7 @@ input:checked + .slider::before {
   font-weight: 700;
 }
 
-/* cert media queries starts */
+
 @media screen and (max-width: 600px) {
   /* .cert .box-container {
     
@@ -1025,12 +1025,12 @@ input:checked + .slider::before {
  */
   .cert .box-container .box {
     width: 100%;
-    margin-top: 1rem; /* ลดขนาด margin */
+    margin-top: 1rem;
   }
 
   .cert .box-container .box .image {
     width: 100%;
-    height: auto; /* ปรับความสูงของรูปภาพให้เหมาะสม */
+    height: auto;
   }
 
   .cert .box-container .box img {

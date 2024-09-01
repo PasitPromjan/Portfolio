@@ -106,7 +106,7 @@ getProjects().then(data => {
 // fetch projects end
 
 // Start of Tawk.to Live Chat
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+/* var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 (function () {
     var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
     s1.async = true;
@@ -114,11 +114,11 @@ var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     s1.charset = 'UTF-8';
     s1.setAttribute('crossorigin', '*');
     s0.parentNode.insertBefore(s1, s0);
-})();
+})(); */
 // End of Tawk.to Live Chat
 
 // disable developer mode
-document.onkeydown = function (e) {
+/* document.onkeydown = function (e) {
     if (e.keyCode == 123) {
         return false;
     }
@@ -134,4 +134,33 @@ document.onkeydown = function (e) {
     if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
         return false;
     }
-}
+} */
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const switchToggle = document.querySelector('.toggle');
+        const savedTheme = localStorage.getItem('theme');
+
+        function switchMode(e) {
+            const theme = e.target.checked ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            switchToggle.checked = savedTheme === 'light';
+        }
+
+        switchToggle.addEventListener('change', switchMode);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+
+        // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    });

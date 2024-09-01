@@ -6,42 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link id='favicon' rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-png">
-    <title>Projects | Portfolio Jigar Sable</title>
+    <title>Projects | Pasit Promjan</title>
 </head>
-<body oncontextmenu="return false">
-
+<body >
 <!-- navbar starts -->
 <header>
-        <a href="/" class="logo"><i class="fab fa-node-js"></i> Jigar</a>
-
-        <div id="menu" class="fas fa-bars"></div>
-        <nav class="navbar">
-            <ul>
-            <li><a href="/#home">Home</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#skills">Skills</a></li>
-            <li><a href="/#education">Education</a></li>
-            <li><a class="active" href="/#work">Work</a></li>
-            <li><a href="/#experience">Experience</a></li>
-            <li><a href="/#contact">Contact</a></li>
-            </ul>
-        </nav>
+  <a href="/" class="logo">
+    <i class="fa-solid fa-user"></i> Pasit
+  </a>
+    
+    <div class="theme">
+      
+      <label class="theme-switch">
+          <input type="checkbox" class="toggle">
+          <div class="slider round"></div>
+      </label>
+  </div>
+  
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <ul>
+        <li><a class="btn-nav" href="#home">Home</a></li>
+        <li><a class="btn-nav" href="#about">About</a></li>
+        <li><a class="active btn-nav" href="#edu">Education</a></li>
+        <li><a class="btn-nav" href="#skills">Skills</a></li>
+        <li><a class="btn-nav" href="#cert">Certificate</a></li>
+        <li><a class="btn-nav" href="#work">Work</a></li>
+        <li><a class="btn-nav" href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 <!-- navbar ends -->
 
+
 <!-- work project section starts -->
 <section class="work" id="work">
-
+  
+  
   <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
   
   <div id="filters" class="button-group">
-    <button class="btn is-checked" data-filter="*">All Projects</button>
-    <button class="btn" data-filter=".mern">MERN Stack</button>
-    <button class="btn" data-filter=".lamp">LAMP Stack</button>
-    <button class="btn" data-filter=".basicweb">Basic Web</button>
-    <button class="btn" data-filter=".android">Android App</button>
+    <button class="btn is-checked" data-filter="*"><span class="text">All Projects</span></button>
+    <button class="btn" data-filter=".mern" role="button"><span class="text">MERN Stack</span></button>
+    <button class="btn" data-filter=".lamp" role="button"><span class="text">LAMP Stack</span></button>
+    <button class="btn" data-filter=".basicweb" role="button"><span class="text">Basic Web</span></button>
+    <button class="btn" data-filter=".android" role="button"><span class="text">Android App</span></button>
+    
   </div>
 
   <div class="box-container">
@@ -60,7 +72,7 @@
           </div>
         </div>
       </div>
-    </div> -->   
+    </div>   --> 
 
   </div>
 
@@ -94,7 +106,8 @@
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
-<script src="./script.js"></script>
+<script src="script.js"></script>
+
 
 </body>
 </html>

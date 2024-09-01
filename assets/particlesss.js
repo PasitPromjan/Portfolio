@@ -136,3 +136,31 @@ document.addEventListener('DOMContentLoaded', function() {
     tgl_edu.addEventListener('change', switchtgledu);
     tgl_skill.addEventListener('change', switchtglskill);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const switchToggle = document.querySelector('.toggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function switchMode(e) {
+        const theme = e.target.checked ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+
+    // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        switchToggle.checked = savedTheme === 'light';
+    }
+
+    switchToggle.addEventListener('change', switchMode);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+
+    // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+});
