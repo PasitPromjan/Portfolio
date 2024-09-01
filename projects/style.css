@@ -361,7 +361,6 @@ input:checked + .slider::before {
 }
 .work .button-group{
   display: flex;
-  flex-wrap: wrap;
   gap:1rem;
   margin: 2rem auto;
   width: 50%;
@@ -503,6 +502,13 @@ input:checked + .slider::before {
   }
 }
 
+@media screen and (max-width: 1060px){
+  .button-group{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+}
 
 
 
