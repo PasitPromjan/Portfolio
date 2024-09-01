@@ -427,38 +427,7 @@
 
 <script src="assets/script.js"></script>
 
-<!-- <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const navbarLinks = document.querySelectorAll('.navbar a');
 
-  navbarLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        const header = document.querySelector('header');
-        const headerOffset = header ? header.offsetHeight : 0; // ใช้ความสูงของ header
-
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - headerOffset;
-
-        console.log(`Element Position: ${elementPosition}`);
-        console.log(`Header Offset: ${headerOffset}`);
-        console.log(`Offset Position: ${offsetPosition}`);
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
-
-</script> -->
 
 <script>
   $(document).ready(function() {
@@ -476,6 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/72/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 
 
 </body>
