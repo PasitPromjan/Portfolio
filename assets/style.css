@@ -646,12 +646,18 @@ input:checked + .slider::before {
   .home .image img {
     display: none;
   }
+  .home{
+    min-height: 65vh;
+  }
 }
 
 @media screen and (max-width: 1001px) {
   
   .home .image img {
     display: none;
+  }
+  .home{
+    min-height: 65vh;
   }
 }
 /* hero media queries ends*/
@@ -725,7 +731,7 @@ input:checked + .slider::before {
 }
 
 /* about media queries starts*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1140px) {
   .about .row .image {
     margin-top: 2rem;
   }
@@ -763,6 +769,12 @@ input:checked + .slider::before {
   mask: 
     conic-gradient(from calc(var(--a)/-2) at bottom,
       #0000, #000 1deg calc(var(--a) - 1deg), #0000 var(--a)) 50%/var(--s);
+}
+
+@media screen and (max-width: 600px) {
+  .zig-zag-3d-edge{
+    height: 80px;
+  }
 }
 /* .resumebtn {
   margin-top: 6rem;
