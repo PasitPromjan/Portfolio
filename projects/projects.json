@@ -1,19 +1,22 @@
 [
   {
-    "name": "NotyStack Android",
-    "desc": "Fully fledged android CRUD app based on different design patterns. Built using Java, XML, SQLite, Firebase, RoomDB, MVVM.",
-    "image": "notystackandroid",
-    "category": "android",
+    "name": "The student enrollment system",
+    "desc": "The student enrollment system of Kamphaengphet Pittayakom School",
+    "image": "pro-school.png",
+    "category": "basicweb",
     "links": {
       "view": "https://www.linkedin.com/posts/jigar-sable_androiddev-androidstudio-java-activity-6955224473822199808-JT0j",
       "code": "https://github.com/jigar-sable/notystack-android"
     }
   },
   {
-    "name": "SPPU Engg Prep",
+    "name": "Song lyric",
     "desc": "All in one SPPU Engineering resources. Built using Java, XML and Firebase.",
-    "image": "sppuprepandroid",
-    "category": "android",
+    "image": "pro/song_lyric-main.png",
+    "image-html": "pro/song_lyric-html.png" ,
+    "image-js": "pro/song_lyric-js.png" ,
+    "image-css": "pro/song_lyric-css.png" ,
+    "category": "basicweb",
     "links": {
       "view": "https://www.linkedin.com/posts/jigar-sable_androiddev-androidstudio-java-activity-6955224473822199808-JT0j",
       "code": "https://github.com/jigar-sable/sppu-prep-android"

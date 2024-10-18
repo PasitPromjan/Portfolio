@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     // <!-- emailjs to mail contact form data -->
     $("#contact-form").submit(function (event) {
-        emailjs.init("user_TTDmetQLYgWCLzHTDgqxm");
+        emailjs.init("C55AbtWUsLTEnY7tj");
 
         emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
             .then(function (response) {
@@ -110,43 +110,89 @@ function showSkills(skills) {
 function showProjects(projects) {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
-  projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
-      projectHTML += `
-      <div class="box tilt">
-    <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
-    <div class="content">
-      <div class="tag">
-      <h3>${project.name}</h3>
-      </div>
-      <div class="desc">
-        <p>${project.desc}</p>
-        <div class="btns">
-          <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-          <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>`
+  projects.slice(0, 6).forEach((project, index) => {
+    projectHTML += `
+      <div class="pro-item tilt" data-index="${index}" data-img="${project.image}">
+        <p class="pro-name">${project.name}</p> 
+        <i class="pro-play"> <img src="https://www.rafaelalucas.com/dailyui/16/assets/play.svg" alt = "" ></i>
+        <img class="pro-image" src="assets/images/${project.image}" alt="">
+      </div>`;
   });
   projectsContainer.innerHTML = projectHTML;
 
-  // <!-- tilt js effect starts -->
+  
   VanillaTilt.init(document.querySelectorAll(".tilt"), {
-      max: 15,
+    max: 15,
   });
-  // <!-- tilt js effect ends -->
 
   /* ===== SCROLL REVEAL ANIMATION ===== */
   const srtop = ScrollReveal({
-      origin: 'top',
-      distance: '80px',
-      duration: 1000,
-      reset: true
+    origin: 'top',
+    distance: '80px',
+    duration: 1000,
+    reset: true
   });
 
   /* SCROLL PROJECTS */
   srtop.reveal('.work .box', { interval: 200 });
 
+  // Select elements
+  const videoItem = document.querySelectorAll('.pro-item'),
+    modalVideo = document.querySelector('.modal'),
+    modalImage = document.getElementById('modal-main'),
+    iconCloseVideo = document.querySelector('.modal-icon'),
+    body = document.querySelector('body');
+
+  videoItem.forEach(function (el) {
+    el.addEventListener("click", openVideo);
+  });
+
+  iconCloseVideo.addEventListener("click", closeVideo);
+
+  function openVideo(e) {
+    
+    const projectIndex = e.currentTarget.dataset.index;
+    const imgSrc = projects[projectIndex].image;
+    modalImage.src = `assets/images/${imgSrc}`;
+
+    setTimeout(() => {
+      modalVideo.classList.add('open');
+    }, 300);
+
+    body.style.overflow = "hidden";
+  }
+
+  
+
+bgCloseVideo = document.querySelector('.modal-bg')
+bgCloseVideo.addEventListener("click", trigger);
+function trigger() {
+
+  console.log("ddd")
+
+}
+
+function closeVideo() {
+  
+    modalVideo.classList.remove('open');
+    videoFrame.src = "";
+
+}
+
+if (window.innerWidth > 799) {
+  document.querySelector('.box-container').style.height = window.innerHeight + "px";
+
+}
+document.querySelector('.modal').style.height = window.innerHeight + "px";
+}
+
+modalVideo = document.querySelector('.modal')
+bgCloseVideo = document.querySelector('.modal-bg')
+bgCloseVideo.addEventListener("click", trigger);
+function trigger() {
+
+  modalVideo.classList.remove('open');
+  videoFrame.src = "";
 }
 
 fetchData().then(data => {
@@ -214,7 +260,6 @@ const srtop = ScrollReveal({
     reset: true
 });
 
-/* SCROLL HOME */
 srtop.reveal('.home .content h3', { delay: 200 });
 srtop.reveal('.home .content p', { delay: 200 });
 srtop.reveal('.home .content .btn', { delay: 200 });
@@ -227,7 +272,6 @@ srtop.reveal('.home .telegram', { interval: 600 });
 srtop.reveal('.home .instagram', { interval: 600 });
 srtop.reveal('.home .dev', { interval: 600 });
 
-/* SCROLL ABOUT */
 srtop.reveal('.about .content h3', { delay: 200 });
 srtop.reveal('.about .content .tag', { delay: 200 });
 srtop.reveal('.about .content p', { delay: 200 });
@@ -235,21 +279,16 @@ srtop.reveal('.about .content .box-container', { delay: 200 });
 srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
 
-/* SCROLL SKILLS */
 srtop.reveal('.skills .container', { interval: 200 });
 srtop.reveal('.skills .container .bar', { delay: 400 });
 
-/* SCROLL cert */
 srtop.reveal('.cert .box', { interval: 200 });
 
-/* SCROLL PROJECTS */
 srtop.reveal('.work .box', { interval: 200 });
 
-/* SCROLL edu */
 srtop.reveal('.edu .timeline', { delay: 400 });
 srtop.reveal('.edu .timeline .container', { interval: 400 });
 
-/* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
 
@@ -361,50 +400,44 @@ $(document).ready(function() {
 
 var product =[{
   id:0,
-  img:'assets/images/cert1.png',
+  img:'cert1.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
 
 },{
   id:1,
-  img:'assets/images/cert1.png' ,
-  img:'assets/images/cert1.png',
+  img:'cert2.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed' 
 },{
   id:2,
-  img:'assets/images/cert1.png',
-  img:'assets/images/cert1.png',
+  img:'cert1.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
 },{
   id:3,
-  img:'assets/images/cert1.png',
-  img:'assets/images/cert1.png',
+  img:'cert2.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
 },{
   id:4,
-  img:'assets/images/cert1.png',
-  img:'assets/images/cert1.png',
+  img:'cert1.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
 },{
   id:5,
-  img:'assets/images/cert1.png',
-  img:'assets/images/cert1.png',
+  img:'cert2.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
 },{
   id:6,
-  img:'assets/images/cert1.png',
-  img:'assets/images/cert1.png',
+  img:'cert1.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
   p:'กหฟกฟดกหฟดฟดฟดฟหดดฟ',
   h4:'2018-2020 | Completed'
@@ -413,16 +446,55 @@ var product =[{
 $(document).ready(() => {
   var box ='';
   for(let i=0;i<product.length; i++){
-      box+= `<div class="box">
-      <div class="image">
-      <img draggable="false" src="${product[i].img}" alt="">
-      </div>
-      <div class="content">
+      box+= `<div class="box swiper-slide">
+    <img src="assets/images/cert/${product[i].img}" alt="">
+    <div class="content">
+      <div class="tag">
       <h3>${product[i].h3}</h3>
-      <p>${product[i].p}</p>
-      <h4>${product[i].h4}</h4>
       </div>
-    </div>`;
+      <div class="desc">
+        <p>${product[i].p}</p>
+        <h4>${product[i].h4}</h4>
+      </div>
+    </div>
+  </div>`;
   }
   $("#cert-list").html(box);
 })
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: "1",
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 4,
+      slideShadows: false
+    },
+    keyboard: {
+      enabled: true
+    },
+    mousewheel: {
+      thresholdDelta: 70
+    },
+    initialSlide: 0,
+    on: {
+      click(event) {
+        swiper.slideTo(this.clickedIndex);
+      }
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2
+      }
+    }
+  });
+});
+

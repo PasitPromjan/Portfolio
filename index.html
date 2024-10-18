@@ -7,10 +7,12 @@
     <meta name="keywords" content="Pasit Promjan, portfolio" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel='stylesheet' href='https://raw.githubusercontent.com/JohnBlazek/codepen-resources/master/3d-carousel/css/stylesheet.css'><link rel="stylesheet" href="./style.css">
 
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css'>
     <link id='favicon' rel="shortcut icon" href="assets/images/icon.png" type="image/x-png">
     <title>Portfolio | Pasit Promjan</title>
 </head>
@@ -20,7 +22,6 @@
 <!-- <div class="loader-container">
   <img draggable="false" src="assets/images/preloader.gif" alt="">
 </div> -->
-
 <!-- navbar starts -->
 <header>
       <a href="/" class="logo">
@@ -261,9 +262,14 @@
     <p class="qoute">cert is not the learning of facts, but the training of the mind to think.</p>
   <br>
 
-  <div class="box-container" id="cert-list">
-       
+  <div class="box-container swiper mySwiper" >
+      <div class="swiper-wrapper" id="cert-list">
+          
+      </div>
     </div>
+  
+    
+    
 
 </div>
 </section>
@@ -293,6 +299,27 @@
         </div>
       </div>
     </div>  -->
+
+</div>
+
+<div class="modal">
+  <div class="modal-bg"></div>
+  <div class="modal-container">
+      <!-- <i class="modal-icon">
+          <img src="https://www.rafaelalucas.com/dailyui/16/assets/cross.svg" alt="">
+      </i> -->
+
+      <!-- <div class="modal-video">
+      <iframe src="" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen"
+      allowfullscreen></iframe> -->
+      <img id="modal-main" class="modaldesc-main " src="" alt="">
+      <img id="modal-main" class="modaldesc-main" src="" alt="">
+      <img id="modal-html" class="modaldesc-html" src="" alt="">
+      <img id="modal-js" class="modaldesc-js" src="" alt="">
+      <img id="modal-css" class="modaldesc-css" src="" alt="">
+      </div>
+
+  </div>
 
 </div>
 
@@ -396,6 +423,11 @@
 <a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
 <!-- scroll back to top -->
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/72/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js'></script>
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
 <!-- jquery cdn -->
@@ -426,7 +458,8 @@
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
 <script src="assets/script.js"></script>
-
+<script src="assets/particle-container.js"></script>
+<script src="assets/particlesss.js"></script>
 
 
 <script>
@@ -439,12 +472,6 @@
   });
 </script>
 
-<script src="assets/particle-container.js"></script>
-<script src="assets/particlesss.js"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/72/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 
 
