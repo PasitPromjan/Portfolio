@@ -107,6 +107,8 @@ function showSkills(skills) {
     skillsContainer.innerHTML = skillHTML;
 }
 
+
+
 function showProjects(projects) {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
@@ -398,7 +400,7 @@ $(document).ready(function() {
   });
 });
 
-var product =[{
+/* var product =[{
   id:0,
   img:'cert1.png',
   h3:'กฟหกหฟหกฟหกฟกหกฟ' ,
@@ -460,41 +462,75 @@ $(document).ready(() => {
   </div>`;
   }
   $("#cert-list").html(box);
-})
+}) */
 
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var swiper = new Swiper(".mySwiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: "1",
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 4,
-      slideShadows: false
-    },
-    keyboard: {
-      enabled: true
-    },
-    mousewheel: {
-      thresholdDelta: 70
-    },
-    initialSlide: 0,
-    on: {
-      click(event) {
-        swiper.slideTo(this.clickedIndex);
-      }
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2
+  $(document).ready(async () => {
+    async function fetchCertificates() {
+      try {
+        let response = await fetch('certificates.json');
+        let data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error fetching certificates:', error);
       }
     }
+  
+    const certificates = await fetchCertificates();
+    if (certificates) {
+      let box = '';
+      certificates.forEach(certificate => {
+        box += `
+        <div class="box swiper-slide">
+          <img src="assets/images/cert/${certificate.img}" alt="">
+          <div class="content">
+            <div class="tag">
+              
+            </div>
+            <div class="desc">
+              <h1>${certificate.h3}</h1>
+              <p>${certificate.p}</p>
+              <h4>${certificate.h4}</h4>
+            </div>
+          </div>
+        </div>`;
+      });
+      $("#cert-list").html(box);
+    }
   });
-});
 
+  document.addEventListener('DOMContentLoaded', async function () {
+    await new Promise(resolve => setTimeout(resolve, 0));
+  
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      slidesPerView: "1",
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 4,
+        slideShadows: false
+      },
+      keyboard: {
+        enabled: true
+      },
+      mousewheel: {
+        thresholdDelta: 70
+      },
+      initialSlide: 0,
+      on: {
+        click(event) {
+          swiper.slideTo(this.clickedIndex);
+        }
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2
+        }
+      }
+    });
+  });
+  

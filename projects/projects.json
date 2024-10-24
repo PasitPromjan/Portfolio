@@ -2,7 +2,10 @@
   {
     "name": "The student enrollment system",
     "desc": "The student enrollment system of Kamphaengphet Pittayakom School",
-    "image": "pro-school.png",
+    "image": {
+      
+    },
+    "image-html": "pro/song_lyric-html.png",
     "category": "basicweb",
     "links": {
       "view": "https://www.linkedin.com/posts/jigar-sable_androiddev-androidstudio-java-activity-6955224473822199808-JT0j",

@@ -1,111 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-    <style>
-        /* ---- reset ---- */
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
 
-body {
-  padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
 
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
 
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* ---- particles.js container ---- */
-
-
-    </style>
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- particles.js container --> 
-<div id="canvas"></div>
+  <swiper-container class="mySwiper" pagination="true" pagination-type="progressbar" navigation="true">
+    <swiper-slide>Slide 1</swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+    <swiper-slide>Slide 4</swiper-slide>
+    <swiper-slide>Slide 5</swiper-slide>
+    <swiper-slide>Slide 6</swiper-slide>
+    <swiper-slide>Slide 7</swiper-slide>
+    <swiper-slide>Slide 8</swiper-slide>
+    <swiper-slide>Slide 9</swiper-slide>
+  </swiper-container>
 
-<!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/72/three.min.js"></script>
-    
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
-    <script>
-var camera, scene, renderer, particles, particle, material, particleCount, points, texture;
-var xSpeed, ySpeed;
-xSpeed = 0.0005;
-ySpeed = 0.001;
-var winWidth, winHeight;
-winWidth = window.innerWidth;
-winHeight = window.innerHeight;
-
-init();
-animate();
-
-function init(){
-  scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2('#222', 0.001);
-
-  camera = new THREE.PerspectiveCamera(75, winWidth/winHeight, 1, 1000);
-  camera.position.z = 500;
-
-  material = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 3,
-    transparent: true,
-    blending: THREE.AdditiveBlending
-  });
-
-  particleCount = 1000;
-  particles = new THREE.Geometry();
-
-  for (var i = 0; i < particleCount; i++) {
-    var px = Math.random() * 2000 - 1000;
-    var py = Math.random() * 2000 - 1000;
-    var pz = Math.random() * 2000 - 1000;
-    particle = new THREE.Vector3(px, py, pz);
-    particle.velocity = new THREE.Vector3(0, Math.random(), 0);
-    particles.vertices.push(particle);
-  }
-
-  points = new THREE.Points(particles, material);
-  points.sortParticles = true;
-  scene.add(points);
-
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(winWidth, winHeight);
-  renderer.setClearColor('#222', 1);
-  document.getElementById('canvas').appendChild(renderer.domElement);
-}
-
-function animate(){
-  requestAnimationFrame(animate);
-  
-  scene.rotation.y += xSpeed;
-
-  var i = particleCount;
-  while(i--){
-    var particle = particles.vertices[i];
-
-    if(particle.y > 1000){
-      particle.y = -1000;
-      particle.velocity.y = Math.random();
-    }
-    particle.velocity.y += Math.random() * ySpeed;
-
-    particle.add(particle.velocity);
-  }
-  points.geometry.verticesNeedUpdate = true;
-
-  render();
-}
-
-function render(){
-  camera.lookAt(scene.position);
-  renderer.render(scene, camera);
-}
-
-    </script>
 </body>
+
 </html>

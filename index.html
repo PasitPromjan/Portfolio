@@ -205,7 +205,6 @@
       <div class="container" style="display: flex ;justify-content: center; align-items: center;">
         <span class="Sphere" style="display: none;" id="Sphere"></span>
 
-    <!-- Including the TagCloud.js script CDN in the document    -->
     <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"> </script>
     <script>
         const Texts = [
@@ -216,36 +215,25 @@
             'SQL', 'MYSQL', 'JQUERY', 'JAVA'
         ];
 
-        function initializeTagCloud() {
-            // Determine the radius based on screen width
-            const radius = window.innerWidth < 600 ? 150 : 230;
+        async function initializeTagCloud() {
+          await new Promise(resolve => setTimeout(resolve, 0));
 
-            // Initialize TagCloud with the determined radius
-            TagCloud('.Sphere', Texts, {
-                // Sphere radius in px
-                radius: radius,
+          const radius = window.innerWidth < 600 ? 150 : 230;
 
-                // Animation speed
-                // slow, normal, fast
-                maxSpeed: 'normal',
-                initSpeed: 'fast',
+          TagCloud('.Sphere', Texts, {
+              radius: radius,
+              maxSpeed: 'normal',
+              initSpeed: 'fast',
+              direction: 135,
+              keep: true
+          });
 
-                // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)]
-                direction: 135,
+          var color = '#B99470';
+          document.querySelector('.Sphere').style.color = color;
+      }
 
-                // Interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
-                keep: true
-            });
 
-            // Set the color for the text
-            var color = '#B99470';
-            document.querySelector('.Sphere').style.color = color;
-        }
-
-            // Initialize the TagCloud on page load
             initializeTagCloud();
-
-            // Reinitialize the TagCloud when the window is resized
             window.addEventListener('resize', initializeTagCloud);
     </script>
       </div>
@@ -304,23 +292,13 @@
 
 <div class="modal">
   <div class="modal-bg"></div>
-  <div class="modal-container">
-      <!-- <i class="modal-icon">
-          <img src="https://www.rafaelalucas.com/dailyui/16/assets/cross.svg" alt="">
-      </i> -->
-
-      <!-- <div class="modal-video">
-      <iframe src="" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen"
-      allowfullscreen></iframe> -->
+    <div class="modal-container">
       <img id="modal-main" class="modaldesc-main " src="" alt="">
       <img id="modal-main" class="modaldesc-main" src="" alt="">
       <img id="modal-html" class="modaldesc-html" src="" alt="">
       <img id="modal-js" class="modaldesc-js" src="" alt="">
       <img id="modal-css" class="modaldesc-css" src="" alt="">
-      </div>
-
-  </div>
-
+    </div>
 </div>
 
 <div class="viewall">
