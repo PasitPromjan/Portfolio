@@ -112,12 +112,12 @@ function showSkills(skills) {
 function showProjects(projects) {
   let projectsContainer = document.querySelector("#work .box-container");
   let projectHTML = "";
-  projects.slice(0, 6).forEach((project, index) => {
+  projects.slice(0, 4).forEach((project, index) => {
     projectHTML += `
       <div class="pro-item tilt" data-index="${index}" data-img="${project.image}">
         <p class="pro-name">${project.name}</p> 
         <i class="pro-play"> <img src="https://www.rafaelalucas.com/dailyui/16/assets/play.svg" alt = "" ></i>
-        <img class="pro-image" src="assets/images/${project.image}" alt="">
+        <img class="pro-image" src="assets/images/pro/${project.image}" style="object-fit: cover; object-position: top;" alt="">
       </div>`;
   });
   projectsContainer.innerHTML = projectHTML;
@@ -141,9 +141,12 @@ function showProjects(projects) {
   // Select elements
   const videoItem = document.querySelectorAll('.pro-item'),
     modalVideo = document.querySelector('.modal'),
-    modalImage = document.getElementById('modal-main'),
+    modalImage = document.getElementById('modal-main-1'),
     iconCloseVideo = document.querySelector('.modal-icon'),
-    body = document.querySelector('body');
+    body = document.querySelector('body'),
+    htmlImage = document.getElementById('modal-html'),
+    cssImage = document.getElementById('modal-css'),
+    jsImage = document.getElementById('modal-js');
 
   videoItem.forEach(function (el) {
     el.addEventListener("click", openVideo);
@@ -152,10 +155,21 @@ function showProjects(projects) {
   iconCloseVideo.addEventListener("click", closeVideo);
 
   function openVideo(e) {
-    
-    const projectIndex = e.currentTarget.dataset.index;
-    const imgSrc = projects[projectIndex].image;
-    modalImage.src = `assets/images/${imgSrc}`;
+    const myLayout = document.getElementById("modal-container");
+    myLayout.scrollTop = 0;
+
+
+    const projectIndex = e.currentTarget.dataset.index,
+     imgSrc = projects[projectIndex].image,
+     imghtml = projects[projectIndex].image_main.html,
+     imgcss = projects[projectIndex].image_main.css,
+     imgjs = projects[projectIndex].image_main.js;
+
+
+    modalImage.src = `assets/images/pro/${imgSrc}`;
+    htmlImage.src = `assets/images/pro/${imghtml}`;
+    jsImage.src = `assets/images/pro/${imgjs}`;
+    cssImage.src = `assets/images/pro/${imgcss}`;
 
     setTimeout(() => {
       modalVideo.classList.add('open');
@@ -166,26 +180,26 @@ function showProjects(projects) {
 
   
 
-bgCloseVideo = document.querySelector('.modal-bg')
-bgCloseVideo.addEventListener("click", trigger);
-function trigger() {
+  bgCloseVideo = document.querySelector('.modal-bg')
+  bgCloseVideo.addEventListener("click", trigger);
+  function trigger() {
 
-  console.log("ddd")
+    console.log("ddd")
 
-}
+  }
 
-function closeVideo() {
-  
-    modalVideo.classList.remove('open');
-    videoFrame.src = "";
+  function closeVideo() {
+    
+      modalVideo.classList.remove('open');
+      videoFrame.src = "";
 
-}
+  }
 
-if (window.innerWidth > 799) {
-  document.querySelector('.box-container').style.height = window.innerHeight + "px";
+  if (window.innerWidth > 799) {
+    document.querySelector('.box-container').style.height = window.innerHeight + "px";
 
-}
-document.querySelector('.modal').style.height = window.innerHeight + "px";
+  }
+  document.querySelector('.modal').style.height = window.innerHeight + "px";
 }
 
 modalVideo = document.querySelector('.modal')
@@ -464,49 +478,44 @@ $(document).ready(() => {
   $("#cert-list").html(box);
 }) */
 
-  $(document).ready(async () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     async function fetchCertificates() {
       try {
-        let response = await fetch('certificates.json');
-        let data = await response.json();
-        return data;
+        const response = await fetch('certificates.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
       } catch (error) {
         console.error('Error fetching certificates:', error);
+        return null;
       }
     }
   
     const certificates = await fetchCertificates();
     if (certificates) {
-      let box = '';
-      certificates.forEach(certificate => {
-        box += `
+      const certListContainer = document.getElementById("cert-list");
+      let boxContent = certificates.slice(0, 4).map(certificate => `
         <div class="box swiper-slide">
           <img src="assets/images/cert/${certificate.img}" alt="">
           <div class="content">
-            <div class="tag">
-              
-            </div>
+            <div class="tag"></div>
             <div class="desc">
               <h1>${certificate.h3}</h1>
               <p>${certificate.p}</p>
               <h4>${certificate.h4}</h4>
             </div>
           </div>
-        </div>`;
-      });
-      $("#cert-list").html(box);
+        </div>
+      `).join('');
+      certListContainer.innerHTML = boxContent;
     }
-  });
-
-  document.addEventListener('DOMContentLoaded', async function () {
-    await new Promise(resolve => setTimeout(resolve, 0));
   
-    var swiper = new Swiper(".mySwiper", {
+    // Initialize Swiper
+    const swiper = new Swiper(".mySwiper", {
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
       loop: true,
-      slidesPerView: "1",
+      slidesPerView: 1,
       coverflowEffect: {
         rotate: 0,
         stretch: 0,
@@ -514,22 +523,16 @@ $(document).ready(() => {
         modifier: 4,
         slideShadows: false
       },
-      keyboard: {
-        enabled: true
-      },
-      mousewheel: {
-        thresholdDelta: 70
-      },
+      keyboard: { enabled: true },
+      mousewheel: { thresholdDelta: 70 },
       initialSlide: 0,
       on: {
         click(event) {
-          swiper.slideTo(this.clickedIndex);
+          swiper.slideTo(swiper.clickedIndex);
         }
       },
       breakpoints: {
-        640: {
-          slidesPerView: 2
-        }
+        640: { slidesPerView: 2 }
       }
     });
   });

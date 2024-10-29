@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link id='favicon' rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-png">
+    <link id='favicon' rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-png">
     <title>Projects | Pasit Promjan</title>
 </head>
 <body >
@@ -45,16 +45,8 @@
 <section class="work" id="work">
   
   
-  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
-  
-  <div id="filters" class="button-group">
-    <button class="btn is-checked" data-filter="*"><span class="text">All Projects</span></button>
-    <button class="btn" data-filter=".mern" role="button"><span class="text">MERN Stack</span></button>
-    <button class="btn" data-filter=".lamp" role="button"><span class="text">LAMP Stack</span></button>
-    <button class="btn" data-filter=".basicweb" role="button"><span class="text">Basic Web</span></button>
-    <button class="btn" data-filter=".android" role="button"><span class="text">Android App</span></button>
-    
-  </div>
+  <h2 class="heading"><i class="fas fa-laptop-code"></i> Projects </h2>
+
 
   <div class="box-container">
 
@@ -76,6 +68,20 @@
 
   </div>
 
+  <div class="modal" id="pro-modal">
+    <div class="modal-bg"></div>
+      <div class="modal-container" id="modal-container">
+        <h1 style="font-size: 50px">Website Layout</h1>
+        <img id="modal-main-1" class="modaldesc-main " src="" alt="">
+        <img id="modal-main-2" class="modaldesc-main" src="" alt="">
+        <h1 style="font-size: 50px">Code</h1>
+        <img id="modal-html" class="modaldesc-html" src="" alt="">
+        <img id="modal-js" class="modaldesc-js" src="" alt="">
+        <img id="modal-css" class="modaldesc-css" src="" alt="">
+      </div>
+  </div>
+  
+
   <div class="backbtn">
     <a href="../index.html#work" class="btn">
         <i class="fas fa-arrow-left"></i>
@@ -93,6 +99,8 @@
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
 <!-- jquery cdn -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- vanilla tilt.js links -->

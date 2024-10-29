@@ -43,26 +43,15 @@ function getProjects() {
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
     let projectsHTML = "";
-    projects.forEach(project => {
-        projectsHTML += `
-        <div class="grid-item ${project.category}">
-        <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
+    projects.forEach((project, index) => {
+    projectsHTML += `
+      <div class="pro-item tilt " data-index="${index}" data-img="${project.image}">
+        <p class="pro-name">${project.name}</p> 
+        <i class="pro-play"> <img src="https://www.rafaelalucas.com/dailyui/16/assets/play.svg" alt = "" ></i>
+        <img class="pro-image" src="../assets/images/pro/${project.image}" style="object-fit: cover; object-position: top;" alt="">
       </div>
-    </div>
-    </div>`
-    });
+      `;
+  });
     projectsContainer.innerHTML = projectsHTML;
 
     // vanilla tilt.js
@@ -85,10 +74,6 @@ function showProjects(projects) {
     // isotope filter products
     var $grid = $('.box-container').isotope({
         itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-        masonry: {
-            columnWidth: 200
-        }
     });
 
     // filter items on button click
@@ -98,6 +83,93 @@ function showProjects(projects) {
         var filterValue = $(this).attr('data-filter');
         $grid.isotope({ filter: filterValue });
     });
+
+    VanillaTilt.init(document.querySelectorAll(".tilt"), {
+        max: 15,
+      });
+    
+      /* ===== SCROLL REVEAL ANIMATION ===== */
+      const srtop = ScrollReveal({
+        origin: 'top',
+        distance: '80px',
+        duration: 1000,
+        reset: true
+      });
+    
+      /* SCROLL PROJECTS */
+      srtop.reveal('.work .box', { interval: 200 });
+    
+      // Select elements
+      const videoItem = document.querySelectorAll('.pro-item'),
+        modalVideo = document.querySelector('.modal'),
+        modalImage = document.getElementById('modal-main-1'),
+        iconCloseVideo = document.querySelector('.modal-icon'),
+        body = document.querySelector('body'),
+        htmlImage = document.getElementById('modal-html'),
+        cssImage = document.getElementById('modal-css'),
+        jsImage = document.getElementById('modal-js');
+    
+      videoItem.forEach(function (el) {
+        el.addEventListener("click", openVideo);
+      });
+    
+      iconCloseVideo.addEventListener("click", closeVideo);
+    
+      function openVideo(e) {
+        const myLayout = document.getElementById("modal-container");
+        myLayout.scrollTop = 0;
+    
+    
+        const projectIndex = e.currentTarget.dataset.index,
+         imgSrc = projects[projectIndex].image,
+         imghtml = projects[projectIndex].image_main.html,
+         imgcss = projects[projectIndex].image_main.css,
+         imgjs = projects[projectIndex].image_main.js;
+    
+    
+        modalImage.src = `../assets/images/pro/${imgSrc}`;
+        htmlImage.src = `../assets/images/pro/${imghtml}`;
+        jsImage.src = `../assets/images/pro/${imgjs}`;
+        cssImage.src = `../assets/images/pro/${imgcss}`;
+    
+        setTimeout(() => {
+          modalVideo.classList.add('open');
+        }, 300);
+    
+        body.style.overflow = "hidden";
+      }
+    
+      
+    
+      bgCloseVideo = document.querySelector('.modal-bg')
+      bgCloseVideo.addEventListener("click", trigger);
+      function trigger() {
+    
+        console.log("ddd")
+    
+      }
+    
+      function closeVideo() {
+        
+          modalVideo.classList.remove('open');
+          videoFrame.src = "";
+    
+      }
+    
+      if (window.innerWidth > 799) {
+        document.querySelector('.box-container').style.height = window.innerHeight + "px";
+    
+      }
+      document.querySelector('.modal').style.height = window.innerHeight + "px";
+}
+
+modalVideo = document.querySelector('.modal')
+bgCloseVideo = document.querySelector('.modal-bg')
+bgCloseVideo.addEventListener("click", trigger);
+function trigger() {
+
+  modalVideo.classList.remove('open');
+  videoFrame.src = "";
 }
 
 getProjects().then(data => {
@@ -135,32 +207,30 @@ getProjects().then(data => {
         return false;
     }
 } */
+document.addEventListener('DOMContentLoaded', () => {
+    const switchToggle = document.querySelector('.toggle');
+    const savedTheme = localStorage.getItem('theme');
 
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const switchToggle = document.querySelector('.toggle');
-        const savedTheme = localStorage.getItem('theme');
+    function switchMode(e) {
+        const theme = e.target.checked ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
 
-        function switchMode(e) {
-            const theme = e.target.checked ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
+    // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        switchToggle.checked = savedTheme === 'light';
+    }
 
-        // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            switchToggle.checked = savedTheme === 'light';
-        }
+    switchToggle.addEventListener('change', switchMode);
+});
 
-        switchToggle.addEventListener('change', switchMode);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme');
-
-        // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-    });
+    // ตรวจสอบว่ามีค่า theme ที่บันทึกไว้หรือไม่
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+});

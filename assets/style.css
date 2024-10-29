@@ -475,6 +475,10 @@ input:checked + .slider::before {
 
 /* hero section starts */
 .home {
+  background: linear-gradient(0deg, var(--background-main) 1%, rgba(255, 255, 255, 0) 40%), url("back-1.jpg");
+  background-size: cover;
+  background-position: right 30%;
+  transform-origin: right center;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -501,7 +505,7 @@ input:checked + .slider::before {
 
 .home .content {
   flex: 1 1 40rem;
-  padding-top: 1rem;
+  padding-top: 35rem;
   z-index: 1;
 }
 
@@ -544,7 +548,7 @@ input:checked + .slider::before {
 
 .home .content p span {
   font-size: 2.5rem;
-  color: #B99470;
+  color: var(--text-color)  ;
   font-weight: 600;
   padding: 1rem 0;
 }
@@ -1361,7 +1365,7 @@ input:checked + .slider::before {
   backdrop-filter: blur(5px);
 }
 .modal-container {
-  width: 80%;
+  width: 60%;
   max-width: 1280px;
   margin: 20px auto;
   align-items: center;
@@ -1434,10 +1438,14 @@ input:checked + .slider::before {
   position: relative;
   max-width: 100%;
   max-height: 100%;
-  width: auto;
+  width: 50vw;
   height: auto;
   display: block;
 }
+
+.modaldesc-html, .modaldesc-js, .modaldesc-css{
+  width: 50vw;
+} 
 
 /*.work .box-container .box {
   flex: 1 1 30rem;
@@ -1967,7 +1975,7 @@ form .button-area {
     transition: all 1s;
   }
   
-  .btn:after,
+ /*  .btn:after,
   .btn:before {
     content: " ";
     width: 10px;
@@ -1990,7 +1998,7 @@ form .button-area {
     border-bottom: 5px solid #fff;
     border-right: 5px solid #fff;
   }
-  
+   */
   .btn:hover {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
